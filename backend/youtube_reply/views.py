@@ -9,7 +9,7 @@ from .serializers import ReplySerializer
 # Create your views here.
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_cars(request):
+def get_all_replies(request):
     Replies = Reply.objects.all()
     serializer = ReplySerializer(Replies, many=True)
     return Response(serializer.data)
@@ -17,7 +17,7 @@ def get_all_cars(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def user_cars(request):
+def user_replies(request):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':

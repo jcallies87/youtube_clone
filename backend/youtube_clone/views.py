@@ -8,7 +8,7 @@ from .serializers import CommentSerializer
 # Create your views here.
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def get_all_cars(request):
+def get_all_comments(request):
     comments = Comment.objects.all()
     serializer = CommentSerializer(comments, many=True)
     return Response(serializer.data)
@@ -16,7 +16,7 @@ def get_all_cars(request):
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def user_cars(request):
+def user_comments(request):
     print(
         'User ', f"{request.user.id} {request.user.email} {request.user.username}")
     if request.method == 'POST':
