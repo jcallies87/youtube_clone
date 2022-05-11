@@ -1,3 +1,4 @@
+from pickle import PUT
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -11,10 +12,10 @@ from .serializers import CommentSerializer
 def get_all_comments(request):
     comments = Comment.objects.all()
     serializer = CommentSerializer(comments, many=True)
-    return Response(serializer.data)
+    return Response(serializer.data, status = status.HTTP_200_OK )
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET', 'POST', 'PUT'])
 @permission_classes([IsAuthenticated])
 def user_comments(request):
     print(
@@ -29,3 +30,9 @@ def user_comments(request):
         comments = Comment.objects.filter(user_id=request.user.id)
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
