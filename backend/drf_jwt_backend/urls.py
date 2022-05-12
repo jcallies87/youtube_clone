@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
-    path('api/cars/', include('cars.urls')),
+    path('api/youtube_clone/', include('youtube_clone.urls')),
+    path('api/youtube_reply/', include('youtube_reply.urls')),
 ]
