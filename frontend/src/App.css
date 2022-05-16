@@ -35,9 +35,10 @@ button:hover {
 
 .container {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 70%;
   overflow: auto;
   text-align: center;
+  background-color: #085283;
 }
 
 .form {
