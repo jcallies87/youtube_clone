@@ -39,9 +39,10 @@ const HomePage = () => {
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
       <button onClick={() => getSearchResults()}>click for vids</button>
-      {searchResults[0]&&<object src= {searchResults[0].snippet.title}></object>}
+      {searchResults[0]&&<h3>{searchResults[0].snippet.title}</h3>}
       {searchResults[0]&&<img src= {searchResults[0].snippet.thumbnails.high.url}/>}
-      {searchResults[0]&&<text src= {searchResults[0].snippet.description}/>}
+      {searchResults[0]&&<p>{searchResults[0].snippet.description}</p>}
+      {console.log(searchResults[0])}
 
       {cars &&
         cars.map((car) => (
@@ -52,5 +53,4 @@ const HomePage = () => {
     </div>
   );
 };
-
 export default HomePage;
