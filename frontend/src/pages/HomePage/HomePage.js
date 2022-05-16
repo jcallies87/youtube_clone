@@ -76,6 +76,7 @@ const HomePage = () => {
       </div>
     <div className="container">
       <h3>comments</h3>
+      
     </div>
       
       {/* {cars &&
