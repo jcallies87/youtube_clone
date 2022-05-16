@@ -1,0 +1,12 @@
+
+
+.suggestedVideos{
+    position: relative;
+    float: right;
+    border: 2px solid #003B62;
+    font-family: verdana;
+    background-color: #B5CFE0;
+    padding-left: 10px;
+    width: 25%;
+    
+}
