@@ -10,7 +10,16 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
-
+  const [searchResults, setSearchResults] = useState([])
+  
+  const getSearchResults = async () => {
+    try {
+      let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=dogs&key=AIzaSyAGmeDzCGv9RmU7S5NxRSFCjiwbmys9ltQ&part=snippet")
+      setSearchResults(response.data.items)
+    }catch(ex){console.log (ex)}
+  }
+  
+  
   useEffect(() => {
     const fetchCars = async () => {
       try {
@@ -29,6 +38,11 @@ const HomePage = () => {
   return (
     <div className="container">
       <h1>Home Page for {user.username}!</h1>
+      <button onClick={() => getSearchResults()}>click for vids</button>
+      {searchResults[0]&&<object src= {searchResults[0].snippet.title}></object>}
+      {searchResults[0]&&<img src= {searchResults[0].snippet.thumbnails.high.url}/>}
+      {searchResults[0]&&<text src= {searchResults[0].snippet.description}/>}
+
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
