@@ -13,17 +13,30 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import { useState } from "react";
+import SearchBar from "./components/NavBar/SearchBar";
+
+
+
+
 
 function App() {
+  const [searchItems, setSearchItems] = useState ('')
+
+  function getSearchItems(newItem){
+    setSearchItems(newItem)
+   console.log(searchItems)
+}
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage searchTerm = {searchItems}/>
+              <SearchBar search ={getSearchItems}/>
             </PrivateRoute>
           }
         />

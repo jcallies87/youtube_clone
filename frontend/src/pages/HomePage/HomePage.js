@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import "./Homepage.css"
-const HomePage = () => {
+const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
@@ -11,9 +11,14 @@ const HomePage = () => {
   // const [cars, setCars] = useState([]);
   const [searchResults, setSearchResults] = useState([])
   const [videoId, setVideoId] = useState("mqqft2x_Aa4")
-  const [searchTerm, setSearchTerm] = useState("dogs")
-
-
+  const [searchTerm, setSearchTerm] = useState('dogs')
+  // const [searchItems, setSearchItems] = useState ('')
+ 
+  console.log(props)
+  
+  // function getSearchItems(newItem){
+  //   setSearchItems(newItem)
+  //  console.log(searchItems)
   const getSearchResults = async () => {
     try {
       let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=AIzaSyAGmeDzCGv9RmU7S5NxRSFCjiwbmys9ltQ&part=snippet`)
@@ -76,7 +81,7 @@ const HomePage = () => {
       </div>
     <div className="container">
       <h3>comments</h3>
-      
+
     </div>
       
       {/* {cars &&
