@@ -25,7 +25,7 @@ function App() {
 
   function getSearchItems(newItem){
     setSearchItems(newItem)
-   console.log(searchItems)
+  //  console.log(searchItems)
 }
   return (
     <div>
@@ -35,7 +35,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage searchTerm = {searchItems}/>
+              <HomePage searchItem = {searchItems}/>
               <SearchBar search ={getSearchItems}/>
             </PrivateRoute>
           }

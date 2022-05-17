@@ -13,9 +13,24 @@ const HomePage = (props) => {
   const [videoId, setVideoId] = useState("mqqft2x_Aa4")
   const [searchTerm, setSearchTerm] = useState('dogs')
   // const [searchItems, setSearchItems] = useState ('')
- 
-  console.log(props)
+  useEffect((props) => {
+    let mounted = true;
+    if(mounted){
+      setSearchTerm(props)
+    }
+    return () => mounted = false;
+  }, [])
   
+  // function setSearchItem(props){
+  //   let setSearchItem = setSearchTerm
+  //   return setSearchTerm('cats')
+  // }
+// function setSearchItem(props){
+// setSearchTerm = props.map((item) => {
+//   return ("")
+// })}
+  console.log(searchTerm)
+  console.log(props)
   // function getSearchItems(newItem){
   //   setSearchItems(newItem)
   //  console.log(searchItems)
