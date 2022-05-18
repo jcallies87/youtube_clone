@@ -13,13 +13,18 @@ const HomePage = (props) => {
   const [videoId, setVideoId] = useState("mqqft2x_Aa4")
   const [searchTerm, setSearchTerm] = useState('dogs')
   // const [searchItems, setSearchItems] = useState ('')
-  useEffect((props) => {
-    let mounted = true;
-    if(mounted){
-      setSearchTerm(props)
-    }
-    return () => mounted = false;
-  }, [])
+  // useEffect(() => {
+  //   let mounted = true;
+  //   if(mounted){
+  //     setSearchTerm(props)
+  //   }
+  //   return () => mounted = false;
+  // }, [searchTerm])
+  
+  //   setSearchTerm(props)
+  useEffect(() => {
+    setSearchTerm(props);
+  }, [props])
   
   // function setSearchItem(props){
   //   let setSearchItem = setSearchTerm
@@ -68,23 +73,28 @@ const HomePage = (props) => {
       <div className= "suggestedVideos" > 
         
         {searchResults[0]&&<h3 >{searchResults[0].snippet.title}</h3>}
-        {searchResults[0]&&<a href= {searchResults[0].id.videoId} ><img src= {searchResults[0].snippet.thumbnails.high.url}alt =""/></a>}
+        {searchResults[0]&&<a href= {searchResults[0].id.videoId} onChange={(event) => setVideoId(event.target.value)}value={searchResults[0].id.videoId}>
+          <img src= {searchResults[0].snippet.thumbnails.high.url}alt =""/></a>}
         {searchResults[0]&&<p>{searchResults[0].snippet.description}</p>}
         
         {searchResults[1]&&<h3 >{searchResults[1].snippet.title}</h3>}
-        {searchResults[1]&&<a href= {searchResults[1].id.videoId} ><img src= {searchResults[1].snippet.thumbnails.high.url}alt =""/></a>}
+        {searchResults[1]&&<a href= {searchResults[1].id.videoId} onChange={(event) => setVideoId(event.target.value)}value={searchResults[0].id.videoId} >
+          <img src= {searchResults[1].snippet.thumbnails.high.url}alt =""/></a>}
         {searchResults[1]&&<p>{searchResults[1].snippet.description}</p>}
         
         {searchResults[2]&&<h3 >{searchResults[2].snippet.title}</h3>}
-        {searchResults[2]&&<a href= {searchResults[2].id.videoId} ><img src= {searchResults[2].snippet.thumbnails.high.url}alt =""/></a>}
+        {searchResults[2]&&<a href= {searchResults[2].id.videoId} onChange={(event) => setVideoId(event.target.value)}value={searchResults[0].id.videoId} >
+          <img src= {searchResults[2].snippet.thumbnails.high.url}alt =""/></a>}
         {searchResults[2]&&<p>{searchResults[2].snippet.description}</p>}
         
         {searchResults[3]&&<h3 >{searchResults[3].snippet.title}</h3>}
-        {searchResults[3]&&<a href= {searchResults[3].id.videoId} ><img src= {searchResults[3].snippet.thumbnails.high.url}alt =""/></a>}
+        {searchResults[3]&&<a href= {searchResults[3].id.videoId} onChange={(event) => setVideoId(event.target.value)}value={searchResults[0].id.videoId} >
+          <img src= {searchResults[3].snippet.thumbnails.high.url}alt =""/></a>}
         {searchResults[3]&&<p>{searchResults[3].snippet.description}</p>}
         
         {searchResults[4]&&<h3 >{searchResults[4].snippet.title}</h3>}
-        {searchResults[4]&&<a href= {searchResults[4].id.videoId} ><img src= {searchResults[4].snippet.thumbnails.high.url}alt =""/></a>}
+        {searchResults[4]&&<a href= {searchResults[4].id.videoId} onChange={(event) => setVideoId(event.target.value)}value={searchResults[0].id.videoId} >
+          <img src= {searchResults[4].snippet.thumbnails.high.url}alt =""/></a>}
         {searchResults[4]&&<p>{searchResults[4].snippet.description}</p>}
       </div>
     <div className="container">
